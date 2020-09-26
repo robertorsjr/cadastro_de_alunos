@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="cadastrarTab" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cadastro.controllers.addController">
+    <children>
+        <Label layoutX="76.0" layoutY="56.0" text="Nome" />
+        <Label layoutX="76.0" layoutY="104.0" text="Data de Nascimento" />
+        <Label layoutX="76.0" layoutY="155.0" text="Sexo" />
+        <Label fx:id="lbResponsavel" layoutX="76.0" layoutY="200.0" text="Responsavel" visible="false" />
+        <TextField fx:id="tfResponsavel" layoutX="263.0" layoutY="195.0" visible="false" />
+        <TextField fx:id="tfNome" layoutX="263.0" layoutY="51.0" />
+        <DatePicker fx:id="datePicker" layoutX="263.0" layoutY="99.0" onAction="#datePicker" />
+        <ChoiceBox fx:id="cb" layoutX="263.0" layoutY="150.0" prefWidth="150.0" />
+        <Button fx:id="onClick" layoutX="263.0" layoutY="268.0" mnemonicParsing="false" onAction="#onClick" text="Cadastrar" />
+    </children>
+</AnchorPane>

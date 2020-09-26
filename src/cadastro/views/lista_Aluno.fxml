@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="listarTab" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cadastro.controllers.listController">
+    <children>
+        <TableView fx:id="listaTab" prefHeight="400.0" prefWidth="600.0">
+            <columns>
+                <TableColumn fx:id="tcNome" prefWidth="129.0" text="Nome" />
+                <TableColumn fx:id="tcSexo" prefWidth="151.0" text="Sexo" />
+                <TableColumn fx:id="tcData" prefWidth="184.0" text="Data de Nascimento" />
+                <TableColumn fx:id="tcResponsavel" prefWidth="135.0" text="Responsável" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

@@ -1,16 +1,13 @@
 package cadastro.models;
 
-
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
-import java.time.LocalDate;
 
 public class Aluno {
     private String nome;
     private String sexo;
     private String dataDeNasc;
-    private TextField responsavel;
+    private String responsavel;
     private int idade;
 
     public int getIdade() {
@@ -45,11 +42,11 @@ public class Aluno {
         this.sexo = sexo;
     }
 
-    public TextField getResponsavel() {
+    public String getResponsavel() {
         return responsavel;
     }
 
-    public void setResponsavel(TextField responsavel) {
+    public void setResponsavel(String responsavel) {
         this.responsavel = responsavel;
     }
 

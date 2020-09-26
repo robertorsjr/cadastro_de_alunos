@@ -8,8 +8,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.time.LocalDate;
-
 public class listController {
 
     @FXML
@@ -28,8 +26,8 @@ public class listController {
     public void initialize() {
         tcNome.setCellValueFactory(new PropertyValueFactory<Aluno, String>("Nome"));
         tcSexo.setCellValueFactory(new PropertyValueFactory<Aluno, String>("Sexo"));
-        tcData.setCellValueFactory(new PropertyValueFactory<Aluno, String>("Data de Nascimento"));
-        tcResponsavel.setCellValueFactory(new PropertyValueFactory<Aluno, String>("Responsavel"));
+        tcData.setCellValueFactory(new PropertyValueFactory<Aluno, String>("dataDeNasc"));
+        tcResponsavel.setCellValueFactory(new PropertyValueFactory<Aluno, String>("responsavel"));
 
         listaTab.setPlaceholder(new Label("Nenhum Cadastro"));
         listaTab.setItems(sistema.alunos);

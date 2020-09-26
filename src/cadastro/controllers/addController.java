@@ -6,6 +6,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import org.jetbrains.annotations.NotNull;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -74,35 +76,36 @@ public class addController{
     public void onClick() {
         Alert alert;
         LocalDate date = datePicker.getValue();
-        try {
-            Aluno aluno = new Aluno();
-            aluno.setNome(tfNome.getText());
-            aluno.setDataDeNasc(formatarData(date));
-            System.out.println(formatarData(date));
-            aluno.setSexo(cb.getValue());
-            aluno.setResponsavel(tfResponsavel);
 
-            boolean cadastrado = sistema.cadastrarAlunos(aluno);
+        Aluno aluno = new Aluno();
+        aluno.setNome(tfNome.getText());
+        aluno.setDataDeNasc(formatarData(date));
+        System.out.println(formatarData(date));
+        aluno.setSexo(cb.getValue());
+        aluno.setResponsavel(tfResponsavel.getText());
 
-            if(cadastrado) {
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Operação");
-                alert.setHeaderText("Sucess");
-                alert.setContentText("Cadastrado com Sucesso!");
-                alert.show();
-            }
-        }catch (Exception e){
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro");
-            alert.setHeaderText("Faild");
-            alert.setContentText("NO NO NO");
+        boolean cadastrado = sistema.cadastrarAlunos(aluno);
+        if(cadastrado) {
+            cleanTextFilds();
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Operação");
+            alert.setHeaderText("Sucess");
+            alert.setContentText("Cadastrado com Sucesso!");
             alert.show();
         }
     }
-    public String  formatarData(LocalDate data){
+    public String  formatarData(@NotNull LocalDate data){
         String dataFormatada;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
          return dataFormatada = data.format(formatter);
     }
+    public void cleanTextFilds(){
+        LocalDate date = datePicker.getValue();
+        tfNome.setText("");
+        datePicker.setValue(null);
+        cb.setItems(choiceBox);
+        tfResponsavel.setText("");
+    }
 }
+
 

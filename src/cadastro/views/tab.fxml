@@ -2,9 +2,10 @@
 
 <?import javafx.scene.control.*?>
 
-<TabPane fx:controller="cadastro.controllers.tabController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<TabPane fx:controller="cadastro.controllers.TabController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
     <tabs>
         <Tab fx:id="cadastrarTab" text="Cadastro" />
         <Tab fx:id="listarTab" text="Lista de Alunos" />
+        <Tab fx:id="buscarTab" text="Buscar Alunos" />
     </tabs>
 </TabPane>

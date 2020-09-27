@@ -7,9 +7,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
-public class addController{
+public class AddController {
     @FXML
     private TextField tfNome;
     @FXML
@@ -24,39 +25,25 @@ public class addController{
     ObservableList choiceBox = FXCollections.observableArrayList();
     Sistema sistema = Sistema.getInstance();
 
+    public void initialize(){
+        choiceBox();
+        datePicker.valueProperty().addListener((observable, oldValue, newValue)->{
+            long age = newValue.until(LocalDate.now(), ChronoUnit.YEARS);
+            if(age >= 18){
+                lbResponsavel.setVisible(false);
+                tfResponsavel.setVisible(false);
+            }else{
+                lbResponsavel.setVisible(true);
+                tfResponsavel.setVisible(true);
+            }
+        });
+    }
     public void choiceBox(){
-        choiceBox.removeAll();
         choiceBox.addAll(Sexo.values());
         cb.getItems().addAll(choiceBox);
     }
-    public void initialize(){
-        choiceBox();
-    }
-    public void datePicker(){
-        Calendar dataAtual = Calendar.getInstance();
-        int anoN = datePicker.getValue().getYear();
-        int mesN = datePicker.getValue().getMonthValue();
-        int diaN = datePicker.getValue().getDayOfMonth();
-        int anoA = dataAtual.get(Calendar.YEAR);
-        int mesA = dataAtual.get(Calendar.MONTH) + 1;
-        int diaA = dataAtual.get(Calendar.DAY_OF_MONTH);
-        int idade = 0;
-        if(anoA - anoN >= 18){
-            idade = 18;
-            if(mesN == mesA){
-                idade = 18;
-                if(diaA < diaN){
-                    idade--;
-                }
-            }
-        }
-        if(idade < 18){
-            lbResponsavel.setVisible(true);
-            tfResponsavel.setVisible(true);
-        }else{
-            lbResponsavel.setVisible(false);
-            tfResponsavel.setVisible(false);
-        }
+    public void onClickExit(){
+        System.exit(0);
     }
     public void onClick() {
         Alert alert;
@@ -93,7 +80,7 @@ public class addController{
     }
     public void cleanTextFilds(){
         tfNome.setText("");
-        datePicker.setValue(null);
+        datePicker.getEditor().clear();
         cb.setItems(choiceBox);
         tfResponsavel.setText("");
         lbResponsavel.setVisible(false);

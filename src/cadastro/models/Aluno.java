@@ -26,6 +26,9 @@ public class Aluno {
     }
 
     public String getSexo() {
+        if(sexo == null){
+            return "";
+        }
         return sexo.getDescricao();
     }
 
@@ -58,8 +61,4 @@ public class Aluno {
         }
         return null;
     }
-
-//    public void setSexo(String value) {
-//        this.sexo = Sexo.valueOf(value);
-//    }
 }

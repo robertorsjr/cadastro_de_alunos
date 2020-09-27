@@ -62,29 +62,61 @@ public class addController{
         Alert alert;
         Aluno aluno = new Aluno();
 
+        validacaoDeCampos();
+
         aluno.setNome(tfNome.getText());
         aluno.setDataDeNasc(datePicker.getValue());
         aluno.setSexo(cb.getValue());
-        aluno.setResponsavel(tfResponsavel.getText());
+        if(tfResponsavel.isVisible()){
+            aluno.setResponsavel(tfResponsavel.getText());
+        }else{
+            aluno.setResponsavel("Não Precisa");
+        }
 
-        boolean cadastrado = sistema.cadastrarAlunos(aluno);
-        if(cadastrado) {
+        if(validacaoDeCampos()){
             cleanTextFilds();
+            sistema.cadastrarAlunos(aluno);
+
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Operação");
             alert.setHeaderText("Sucess");
             alert.setContentText("Cadastrado com Sucesso!");
             alert.show();
+        }else{
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERRO");
+            alert.setHeaderText("ERRO");
+            alert.setContentText("Preencher os campos");
+            alert.show();
         }
-    }
 
+    }
     public void cleanTextFilds(){
         tfNome.setText("");
-//        datePicker.setValue(null);
+        datePicker.setValue(null);
         cb.setItems(choiceBox);
         tfResponsavel.setText("");
         lbResponsavel.setVisible(false);
         tfResponsavel.setVisible(false);
+    }
+    public boolean validacaoDeCampos(){
+        boolean valor =false;
+
+        if(tfNome.getText().isEmpty()){
+            return valor = false;
+        }
+        if(datePicker.getValue() == null) {
+            return valor = false;
+        }
+        if(cb.getValue() == null){
+            return valor = false;
+        }
+        if(tfResponsavel.isVisible()){
+            if(tfResponsavel.getText().isEmpty()){
+                return valor = false;
+            }
+        }
+        return true;
     }
 }
 

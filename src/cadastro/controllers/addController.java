@@ -6,8 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import org.jetbrains.annotations.NotNull;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -30,7 +28,7 @@ public class addController{
     public void choiceBox(){
         choiceBox.removeAll();
         String choice1 = "Masculino";
-        String choice2 = "Femenino";
+        String choice2 = "Feminino";
         String choice3 = "Outro";
         choiceBox.addAll(choice1,choice2,choice3);
         cb.getItems().addAll(choiceBox);
@@ -47,14 +45,6 @@ public class addController{
         int mesA = dataAtual.get(Calendar.MONTH) + 1;
         int diaA = dataAtual.get(Calendar.DAY_OF_MONTH);
         int idade = 0;
-//        System.out.println("Ano atual: "+anoA);
-//        System.out.println("mes atual: "+mesA);
-//        System.out.println("dia atual: "+diaA);
-//        System.out.println("===================");
-//        System.out.println("Ano Nascimento: "+anoN);
-//        System.out.println("mes Nascimento: "+mesN);
-//        System.out.println("dia Nascimento: "+diaN);
-//        System.out.println("====================");
         if(anoA - anoN >= 18){
             idade = 18;
             if(mesN == mesA){
@@ -72,7 +62,6 @@ public class addController{
             tfResponsavel.setVisible(false);
         }
     }
-
     public void onClick() {
         Alert alert;
         LocalDate date = datePicker.getValue();
@@ -80,7 +69,6 @@ public class addController{
         Aluno aluno = new Aluno();
         aluno.setNome(tfNome.getText());
         aluno.setDataDeNasc(formatarData(date));
-        System.out.println(formatarData(date));
         aluno.setSexo(cb.getValue());
         aluno.setResponsavel(tfResponsavel.getText());
 
@@ -94,17 +82,18 @@ public class addController{
             alert.show();
         }
     }
-    public String  formatarData(@NotNull LocalDate data){
+    public String  formatarData(LocalDate data){
         String dataFormatada;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
          return dataFormatada = data.format(formatter);
     }
     public void cleanTextFilds(){
-        LocalDate date = datePicker.getValue();
         tfNome.setText("");
-        datePicker.setValue(null);
+//        datePicker.setValue(null);
         cb.setItems(choiceBox);
         tfResponsavel.setText("");
+        lbResponsavel.setVisible(false);
+        tfResponsavel.setVisible(false);
     }
 }
 

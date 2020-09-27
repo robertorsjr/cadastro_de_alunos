@@ -23,12 +23,5 @@ public class Sistema {
     public boolean cadastrarAlunos(Aluno aluno){
         return alunos.add(aluno);
 
-
-        //se for menor de 18 adicionar responsavel;
-
-    }
-
-    public void listarAlunos(){
-
     }
 }

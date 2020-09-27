@@ -1,22 +1,13 @@
 package cadastro.models;
 
-import javafx.scene.control.TextField;
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Aluno {
     private String nome;
-    private String sexo;
-    private String dataDeNasc;
+    private Sexo sexo;
+    private LocalDate dataDeNasc;
     private String responsavel;
-    private int idade;
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
 
     public String getNome() {
         return nome;
@@ -27,18 +18,18 @@ public class Aluno {
     }
 
     public String getDataDeNasc() {
-        return dataDeNasc;
+        return formatarData(dataDeNasc);
     }
 
-    public void setDataDeNasc(String dataDeNasc) {
+    public void setDataDeNasc(LocalDate dataDeNasc) {
         this.dataDeNasc = dataDeNasc;
     }
 
     public String getSexo() {
-        return sexo;
+        return sexo.getDescricao();
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
 
@@ -53,10 +44,22 @@ public class Aluno {
     @Override
     public String toString() {
         return "Aluno{" +
-                "nome='" + nome + '\'' +
-                ", dataDeNasc=" + dataDeNasc +
-                ", sexo=" + sexo +
-                ", responsavel='" + responsavel + '\'' +
+                "nome='" + getNome() + '\'' +
+                ", dataDeNasc=" + getDataDeNasc() +
+                ", sexo=" +  sexo.getDescricao() +
+                ", responsavel='" + getResponsavel() + '\'' +
                 '}';
     }
+    public String  formatarData(LocalDate data){
+        if(data != null){
+            String dataFormatada;
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            return dataFormatada = data.format(formatter);
+        }
+        return null;
+    }
+
+//    public void setSexo(String value) {
+//        this.sexo = Sexo.valueOf(value);
+//    }
 }

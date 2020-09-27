@@ -1,13 +1,12 @@
 package cadastro.controllers;
 
 import cadastro.models.Aluno;
+import cadastro.models.Sexo;
 import cadastro.models.Sistema;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 public class addController{
@@ -16,7 +15,7 @@ public class addController{
     @FXML
     private DatePicker datePicker;
     @FXML
-    private ChoiceBox<String> cb;
+    private ChoiceBox<Sexo> cb;
     @FXML
     private TextField tfResponsavel;
     @FXML
@@ -27,10 +26,7 @@ public class addController{
 
     public void choiceBox(){
         choiceBox.removeAll();
-        String choice1 = "Masculino";
-        String choice2 = "Feminino";
-        String choice3 = "Outro";
-        choiceBox.addAll(choice1,choice2,choice3);
+        choiceBox.addAll(Sexo.values());
         cb.getItems().addAll(choiceBox);
     }
     public void initialize(){
@@ -64,11 +60,10 @@ public class addController{
     }
     public void onClick() {
         Alert alert;
-        LocalDate date = datePicker.getValue();
-
         Aluno aluno = new Aluno();
+
         aluno.setNome(tfNome.getText());
-        aluno.setDataDeNasc(formatarData(date));
+        aluno.setDataDeNasc(datePicker.getValue());
         aluno.setSexo(cb.getValue());
         aluno.setResponsavel(tfResponsavel.getText());
 
@@ -82,11 +77,7 @@ public class addController{
             alert.show();
         }
     }
-    public String  formatarData(LocalDate data){
-        String dataFormatada;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-         return dataFormatada = data.format(formatter);
-    }
+
     public void cleanTextFilds(){
         tfNome.setText("");
 //        datePicker.setValue(null);

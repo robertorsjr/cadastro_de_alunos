@@ -13,6 +13,6 @@
         <TextField fx:id="tfNome" layoutX="263.0" layoutY="51.0" promptText="Nome" />
         <DatePicker fx:id="datePicker" layoutX="263.0" layoutY="99.0" onAction="#datePicker" promptText="Data" />
         <ChoiceBox fx:id="cb" layoutX="263.0" layoutY="150.0" prefWidth="150.0" />
-        <Button fx:id="onClick" layoutX="263.0" layoutY="268.0" mnemonicParsing="false" onAction="#onClick" text="Cadastrar" />
+        <Button fx:id="onClick" layoutX="263.0" layoutY="265.0" mnemonicParsing="false" onAction="#onClick" text="Cadastrar" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="263.0" AnchorPane.rightAnchor="255.0" AnchorPane.topAnchor="265.0" />
     </children>
 </AnchorPane>

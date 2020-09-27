@@ -1,6 +1,7 @@
 package cadastro.controllers;
 
 import cadastro.models.Aluno;
+import cadastro.models.Sexo;
 import cadastro.models.Sistema;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -15,7 +16,7 @@ public class listController {
     @FXML
     private TableColumn<Aluno, String> tcNome;
     @FXML
-    private TableColumn<Aluno, String> tcSexo;
+    private TableColumn<Aluno, Sexo> tcSexo;
     @FXML
     private TableColumn<Aluno, String> tcData;
     @FXML
@@ -25,7 +26,7 @@ public class listController {
 
     public void initialize() {
         tcNome.setCellValueFactory(new PropertyValueFactory<Aluno, String>("Nome"));
-        tcSexo.setCellValueFactory(new PropertyValueFactory<Aluno, String>("Sexo"));
+        tcSexo.setCellValueFactory(new PropertyValueFactory<Aluno, Sexo>("sexo"));
         tcData.setCellValueFactory(new PropertyValueFactory<Aluno, String>("dataDeNasc"));
         tcResponsavel.setCellValueFactory(new PropertyValueFactory<Aluno, String>("responsavel"));
 

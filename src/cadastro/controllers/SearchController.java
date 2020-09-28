@@ -1,41 +1,45 @@
 package cadastro.controllers;
 
 import cadastro.models.Aluno;
+import cadastro.models.Sexo;
 import cadastro.models.Sistema;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class SearchController {
     @FXML
     private TextField tfBuscar;
     @FXML
-    private TextField tfNome1;
+    private TableView<Aluno> tableViewBuscar;
     @FXML
-    private TextField tfData1;
+    private TableColumn<Aluno, String> tcNome1;
     @FXML
-    private TextField tfSexo1;
+    private TableColumn<Aluno, Sexo> tcSexo1;
     @FXML
-    private TextField tfResponsavel1;
-
+    private TableColumn<Aluno, String> tcData1;
+    @FXML
+    private TableColumn<Aluno, String> tcResponsavel1;
 
 
     Sistema sistema = Sistema.getInstance();
 
     public void onClickSearch(){
-        Aluno aluno = sistema.buscarAlunosPorNome(tfBuscar.getText());
-            tfNome1.setText(aluno.getNome());
-            tfData1.setText(aluno.getDataDeNasc());
-            tfSexo1.setText(aluno.getSexo());
-            tfResponsavel1.setText(aluno.getResponsavel());
+        ObservableList <Aluno> alunosFiltrados = sistema.buscarAlunosPorNome(tfBuscar.getText());
+        tcNome1.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        tcSexo1.setCellValueFactory(new PropertyValueFactory<>("sexo"));
+        tcData1.setCellValueFactory(new PropertyValueFactory<>("dataDeNasc"));
+        tcResponsavel1.setCellValueFactory(new PropertyValueFactory<>("responsavel"));
+
+        tableViewBuscar.setItems(alunosFiltrados);
+
 
     }
     public void onClickLimpar(){
-        tfNome1.setText("");
-        tfData1.setText("");
-        tfSexo1.setText("");
-        tfResponsavel1.setText("");
+
     }
     public void onClickSair(){
         System.exit(0);

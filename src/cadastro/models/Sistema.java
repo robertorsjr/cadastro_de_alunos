@@ -22,12 +22,13 @@ public class Sistema {
         return alunos.add(aluno);
 
     }
-    public Aluno buscarAlunosPorNome(String nome){
+    public ObservableList<Aluno> buscarAlunosPorNome(String nome){
+        ObservableList<Aluno> alunosFiltrados = FXCollections.observableArrayList();
         for(Aluno aluno : alunos){
-            if(aluno.getNome().equalsIgnoreCase(nome)){
-                return aluno;
+            if(aluno.getNome().toLowerCase().startsWith(nome.toLowerCase())){
+                alunosFiltrados.add(aluno);
             }
         }
-        return null;
+        return alunosFiltrados;
     }
 }

@@ -6,16 +6,16 @@
 <AnchorPane fx:id="buscarTab" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cadastro.controllers.SearchController">
    <children>
       <Button fx:id="btn3" layoutX="412.0" layoutY="38.0" mnemonicParsing="false" onAction="#onClickSearch" text="Procurar" />
-      <TextField fx:id="tfBuscar" layoutX="134.0" layoutY="38.0" prefHeight="26.0" prefWidth="240.0" promptText="Digite o nome do aluno" />
-      <TextField fx:id="tfNome1" layoutX="203.0" layoutY="97.0" />
-      <TextField fx:id="tfData1" layoutX="203.0" layoutY="150.0" />
-      <TextField fx:id="tfSexo1" layoutX="203.0" layoutY="208.0" />
-      <TextField fx:id="tfResponsavel1" layoutX="204.0" layoutY="260.0" />
-      <Button layoutX="222.0" layoutY="308.0" mnemonicParsing="false" onAction="#onClickLimpar" text="Limpar" />
-      <Button layoutX="319.0" layoutY="308.0" mnemonicParsing="false" onAction="#onClickSair" text="Sair" />
-      <Label layoutX="98.0" layoutY="102.0" text="Nome" />
-      <Label layoutX="50.0" layoutY="155.0" text="Data de Nascimento" />
-      <Label layoutX="98.0" layoutY="213.0" text="Sexo" />
-      <Label layoutX="73.0" layoutY="265.0" text="Responsavel" />
+      <Button layoutX="118.0" layoutY="314.0" mnemonicParsing="false" onAction="#onClickLimpar" text="Limpar" />
+      <Button layoutX="210.0" layoutY="314.0" mnemonicParsing="false" onAction="#onClickSair" text="Sair" />
+      <TextField fx:id="tfBuscar" layoutX="92.0" layoutY="38.0" prefHeight="26.0" prefWidth="261.0" promptText="Digite o nome do aluno" />
+      <TableView fx:id="tableViewBuscar" layoutX="32.0" layoutY="87.0" prefHeight="200.0" prefWidth="521.0">
+        <columns>
+          <TableColumn fx:id="tcNome1" prefWidth="117.0" text="Nome" />
+          <TableColumn fx:id="tcSexo1" prefWidth="96.0" text="Sexo" />
+            <TableColumn fx:id="tcData1" prefWidth="160.0" text="Data de Nascimento" />
+            <TableColumn fx:id="tcResponsavel1" prefWidth="147.0" text="Responsavel" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

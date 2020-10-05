@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="pane" prefHeight="259.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cadastro.controllers.EditController">
+   <children>
+      <Button fx:id="btnSalvar" layoutX="117.0" layoutY="210.0" mnemonicParsing="false" onAction="#onClickSave" text="Salvar" />
+      <Button fx:id="btnRemover" layoutX="28.0" layoutY="210.0" mnemonicParsing="false" onAction="#onClickRemove" text="Remover" />
+      <Label layoutX="18.0" layoutY="53.0" text="Nome" />
+      <Label layoutX="18.0" layoutY="90.0" text="Data" />
+      <Label layoutX="18.0" layoutY="126.0" text="Sexo" />
+      <Label layoutX="18.0" layoutY="163.0" text="Resp." />
+      <TextField fx:id="tfNome" layoutX="66.0" layoutY="48.0" prefWidth="120.0" />
+      <TextField fx:id="tfResponsavel" layoutX="66.0" layoutY="160.0" prefWidth="120.0" />
+      <DatePicker fx:id="datePicker" layoutX="66.0" layoutY="85.0" prefWidth="120.0" />
+      <ChoiceBox fx:id="cb" layoutX="66.0" layoutY="121.0" prefWidth="120.0" />
+   </children>
+</AnchorPane>

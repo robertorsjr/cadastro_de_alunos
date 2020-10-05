@@ -20,9 +20,16 @@ public class Aluno {
     public String getDataDeNasc() {
         return formatarData(dataDeNasc);
     }
+    public LocalDate getLocalDate(){
+        return this.dataDeNasc;
+    }
 
     public void setDataDeNasc(LocalDate dataDeNasc) {
         this.dataDeNasc = dataDeNasc;
+    }
+
+    public Sexo sexo(){
+        return this.sexo;
     }
 
     public String getSexo() {

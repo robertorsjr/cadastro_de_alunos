@@ -5,6 +5,7 @@ import cadastro.models.Sexo;
 import cadastro.models.Sistema;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -34,6 +35,7 @@ public class SearchController {
         tcData1.setCellValueFactory(new PropertyValueFactory<>("dataDeNasc"));
         tcResponsavel1.setCellValueFactory(new PropertyValueFactory<>("responsavel"));
 
+        tableViewBuscar.setPlaceholder(new Label("Nenhuma Busca"));
         tableViewBuscar.setItems(alunosFiltrados);
 
 

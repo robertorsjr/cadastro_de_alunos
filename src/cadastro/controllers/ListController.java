@@ -4,10 +4,17 @@ import cadastro.models.Aluno;
 import cadastro.models.Sexo;
 import cadastro.models.Sistema;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ListController {
 
@@ -32,5 +39,33 @@ public class ListController {
 
         listaTab.setPlaceholder(new Label("Nenhum Cadastro"));
         listaTab.setItems(sistema.alunos);
+
+        listaTab.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) ->
+                onSelectRow(observableValue.getValue())
+
+
+        );
+
+
+    }
+    public void onSelectRow(Aluno aluno){
+       try{
+           FXMLLoader loader = new FXMLLoader();
+           loader.setLocation(getClass().getResource("/cadastro/views/editar_cadastro.fxml"));
+           loader.load();
+
+           EditController editController = loader.getController();
+           editController.exibirAluno(aluno);
+           Parent editRoot = loader.getRoot();
+
+           Stage stage = new Stage();
+           stage.setScene(new Scene(editRoot));
+           stage.setTitle("Editar Cadastro");
+           stage.initModality(Modality.WINDOW_MODAL);
+           stage.show();
+       }catch (IOException e){
+           e.printStackTrace();
+       }
+
     }
 }

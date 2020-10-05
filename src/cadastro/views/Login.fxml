@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="loginTab" prefHeight="350.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cadastro.controllers.LoginCrontroller">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="56.0" prefHeight="34.0" prefWidth="92.0" text="Usuario">
+         <effect>
+            <ColorAdjust brightness="-0.66" contrast="-0.24" hue="-0.07" />
+         </effect>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="99.0" prefHeight="34.0" prefWidth="92.0" text="Senha">
+         <effect>
+            <ColorAdjust brightness="-0.66" contrast="-0.24" hue="-0.07" />
+         </effect>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="pwSenha" layoutX="332.0" layoutY="103.0" />
+      <TextField fx:id="tfUsuario" layoutX="332.0" layoutY="60.0" />
+      <Button fx:id="btnEntrar" layoutX="233.0" layoutY="164.0" mnemonicParsing="false" onAction="#onClickEntrar" prefHeight="44.0" prefWidth="270.0" text="Entrar" />
+      <Button fx:id="btnSair" layoutX="233.0" layoutY="272.0" mnemonicParsing="false" onAction="#onClickSair" prefHeight="44.0" prefWidth="270.0" text="Sair" />
+      <Button layoutX="233.0" layoutY="219.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="270.0" text="Cadastrar" />
+      <Label layoutX="266.0" layoutY="14.0" text="Cadastro de Alunos">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label accessibleRole="IMAGE_VIEW" alignment="CENTER" layoutX="14.0" layoutY="19.0" prefHeight="321.0" prefWidth="214.0" text="IMAGEM" wrapText="true">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+   </children>
+   <effect>
+      <DropShadow blurType="GAUSSIAN">
+         <color>
+            <Color red="0.07894736528396606" green="0.07383041083812714" blue="0.07383041083812714" />
+         </color>
+      </DropShadow>
+   </effect>
+</AnchorPane>

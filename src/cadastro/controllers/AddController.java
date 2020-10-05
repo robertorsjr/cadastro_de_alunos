@@ -22,6 +22,7 @@ public class AddController {
     @FXML
     private Label lbResponsavel;
 
+
     ObservableList choiceBox = FXCollections.observableArrayList();
     Sistema sistema = Sistema.getInstance();
 
@@ -50,7 +51,6 @@ public class AddController {
         Aluno aluno = new Aluno();
 
         validacaoDeCampos();
-
         aluno.setNome(tfNome.getText());
         aluno.setDataDeNasc(datePicker.getValue());
         aluno.setSexo(cb.getValue());

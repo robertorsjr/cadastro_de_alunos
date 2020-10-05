@@ -11,7 +11,7 @@
       <Label layoutX="18.0" layoutY="90.0" text="Data" />
       <Label layoutX="18.0" layoutY="126.0" text="Sexo" />
       <Label layoutX="18.0" layoutY="163.0" text="Resp." />
-      <TextField fx:id="tfNome" layoutX="66.0" layoutY="48.0" prefWidth="120.0" />
+      <TextField fx:id="tfNome" editable="false" layoutX="66.0" layoutY="48.0" prefWidth="120.0" />
       <TextField fx:id="tfResponsavel" layoutX="66.0" layoutY="160.0" prefWidth="120.0" />
       <DatePicker fx:id="datePicker" layoutX="66.0" layoutY="85.0" prefWidth="120.0" />
       <ChoiceBox fx:id="cb" layoutX="66.0" layoutY="121.0" prefWidth="120.0" />

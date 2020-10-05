@@ -5,14 +5,14 @@
 
 <AnchorPane fx:id="cadastrarTab" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cadastro.controllers.AddController">
     <children>
-        <Label layoutX="76.0" layoutY="56.0" text="Nome" />
-        <Label layoutX="76.0" layoutY="104.0" text="Data de Nascimento" />
-        <Label layoutX="76.0" layoutY="155.0" text="Sexo" />
-        <Label fx:id="lbResponsavel" layoutX="76.0" layoutY="200.0" text="Responsavel" visible="false" />
-        <TextField fx:id="tfResponsavel" layoutX="263.0" layoutY="195.0" promptText="Responsavel" visible="false" />
-        <TextField fx:id="tfNome" layoutX="263.0" layoutY="51.0" promptText="Nome" />
-        <DatePicker fx:id="datePicker" layoutX="263.0" layoutY="99.0" promptText="Data" />
-        <ChoiceBox fx:id="cb" layoutX="263.0" layoutY="150.0" prefWidth="150.0" />
+        <Label layoutX="77.0" layoutY="83.0" text="Nome" />
+        <Label layoutX="76.0" layoutY="125.0" text="Data de Nascimento" />
+        <Label layoutX="80.0" layoutY="168.0" text="Sexo" />
+        <Label fx:id="lbResponsavel" layoutX="75.0" layoutY="208.0" text="Responsavel" visible="false" />
+        <TextField fx:id="tfResponsavel" layoutX="263.0" layoutY="203.0" promptText="Responsavel" visible="false" />
+        <TextField fx:id="tfNome" layoutX="263.0" layoutY="78.0" promptText="Nome" />
+        <DatePicker fx:id="datePicker" layoutX="263.0" layoutY="120.0" promptText="Data" />
+        <ChoiceBox fx:id="cb" layoutX="263.0" layoutY="163.0" prefWidth="150.0" />
         <Button fx:id="onClick" layoutX="263.0" layoutY="265.0" mnemonicParsing="false" onAction="#onClick" text="Cadastrar" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="263.0" AnchorPane.rightAnchor="255.0" AnchorPane.topAnchor="265.0" />
       <Button fx:id="btnExit" layoutX="372.0" layoutY="265.0" mnemonicParsing="false" onAction="#onClickExit" text="Sair" />
     </children>

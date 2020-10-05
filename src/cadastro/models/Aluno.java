@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Aluno {
+
     private String nome;
     private Sexo sexo;
     private LocalDate dataDeNasc;

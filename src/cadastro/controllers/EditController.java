@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+import java.util.Optional;
 
 public class EditController {
 
@@ -48,27 +48,73 @@ public class EditController {
     @FXML
     public void onClickSave(){
         Alert alert;
-        Aluno aluno = new Aluno();
-        aluno.setNome(tfNome.getText());
-        aluno.setDataDeNasc(datePicker.getValue());
-        aluno.setSexo(cb.getValue());
+      try {
+          Aluno aluno = new Aluno();
+          aluno.setNome(tfNome.getText());
+          aluno.setDataDeNasc(datePicker.getValue());
+          aluno.setSexo(cb.getValue());
+          aluno.setResponsavel(tfResponsavel.getText());
 
-        boolean editadoComSucesso = sistema.editarAlunos(tfNome.getText(), aluno);
-        if(editadoComSucesso){
-            alert = new Alert(
-                    Alert.AlertType.INFORMATION,
-                    "Cadastro alterado com sucesso",
-                    ButtonType.OK
-            );
-            alert.setHeaderText("Editar");
-            alert.showAndWait();
-        }
-        Stage stage = (Stage) btnSalvar.getScene().getWindow();
-        stage.close();
+          boolean editadoComSucesso = sistema.editarAlunos(tfNome.getText(), aluno);
+          if(editadoComSucesso){
+              alert = new Alert(
+                      Alert.AlertType.INFORMATION,
+                      "Cadastro alterado com sucesso",
+                      ButtonType.OK
+              );
+              alert.setHeaderText("Editar");
+              alert.showAndWait();
+          }
+          Stage stage = (Stage) btnSalvar.getScene().getWindow();
+          stage.close();
+      }catch (Exception e){
+          alert = new Alert(
+                  Alert.AlertType.ERROR,
+                  "Ocorreu um erro ao editar o aluno.",
+                  ButtonType.OK
+          );
+          alert.setHeaderText("Erro");
+          alert.showAndWait();
+      }
+
 
     }
+    @FXML
     public void onClickRemove(){
+        Stage stage = (Stage) btnRemover.getScene ().getWindow ();
+        stage.close ();
 
+        Alert alert = new Alert (
+                Alert.AlertType.CONFIRMATION,
+                "Deseja remover esse aluno?",
+                ButtonType.CANCEL,
+                ButtonType.OK
+        );
+        alert.setHeaderText ("Remover aluno");
+        Optional<ButtonType> result = alert.showAndWait ();
+
+        if(result.isPresent() && result.get() == ButtonType.OK){
+            try {
+                boolean sucess = sistema.removerAlunos(tfNome.getText());
+
+                if(sucess){
+                    alert = new Alert(
+                            Alert.AlertType.INFORMATION,
+                            "Aluno removido com sucesso",
+                            ButtonType.OK
+                    );
+                    alert.setHeaderText("Remover");
+                    alert.showAndWait();
+                }
+            }catch (Exception e){
+                alert = new Alert(
+                        Alert.AlertType.ERROR,
+                        "Ocorreu um erro ao remover o aluno.",
+                        ButtonType.OK
+                );
+                alert.setHeaderText("Erro");
+                alert.showAndWait();
+            }
+        }
     }
-
 }

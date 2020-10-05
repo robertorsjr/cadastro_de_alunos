@@ -25,8 +25,9 @@ public class Sistema {
         return alunos.add(aluno);
 
     }
-    public void removerAlunos(){
-
+    public boolean removerAlunos(String nome){
+        Aluno aluno = procurarPorNome (nome);
+        return alunos.remove (aluno);
     }
     public boolean editarAlunos(String nome,Aluno aluno){
         for(int i = 0; i < alunos.size(); i++){
@@ -37,6 +38,14 @@ public class Sistema {
             }
         }
         return false;
+    }
+    public Aluno procurarPorNome(String nome){
+        for(Aluno aluno: alunos){
+            if(aluno.getNome ().equals (nome)){
+                return aluno;
+            }
+        }
+        return null;
     }
     public ObservableList<Aluno> buscarAlunosPorNome(String nome){
         ObservableList<Aluno> alunosFiltrados = FXCollections.observableArrayList();

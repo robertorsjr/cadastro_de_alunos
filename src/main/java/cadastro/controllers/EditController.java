@@ -2,13 +2,15 @@ package cadastro.controllers;
 
 import cadastro.models.Aluno;
 import cadastro.models.Sexo;
-import cadastro.models.Sistema;
+import cadastro.services.AlunoService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.sql.SQLException;
 import java.util.Optional;
 
 public class EditController {
@@ -29,7 +31,7 @@ public class EditController {
     private Button btnRemover;
 
     ObservableList choiceBox = FXCollections.observableArrayList();
-    private final Sistema sistema = Sistema.getInstance();
+    private final AlunoService alunoService = AlunoService.getInstance();
     public void choiceBox(){
         choiceBox.addAll(Sexo.values());
         cb.getItems().addAll(choiceBox);
@@ -55,7 +57,7 @@ public class EditController {
           aluno.setSexo(cb.getValue());
           aluno.setResponsavel(tfResponsavel.getText());
 
-          boolean editadoComSucesso = sistema.editarAlunos(tfNome.getText(), aluno);
+          boolean editadoComSucesso = alunoService.editarCadastro(tfNome.getText(), aluno);
           if(editadoComSucesso){
               alert = new Alert(
                       Alert.AlertType.INFORMATION,
@@ -80,7 +82,7 @@ public class EditController {
 
     }
     @FXML
-    public void onClickRemove(){
+    public void onClickRemove() {
         Stage stage = (Stage) btnRemover.getScene ().getWindow ();
         stage.close ();
 
@@ -95,7 +97,7 @@ public class EditController {
 
         if(result.isPresent() && result.get() == ButtonType.OK){
             try {
-                boolean sucess = sistema.removerAlunos(tfNome.getText());
+                boolean sucess = alunoService.removerAluno(tfNome.getText());
 
                 if(sucess){
                     alert = new Alert(

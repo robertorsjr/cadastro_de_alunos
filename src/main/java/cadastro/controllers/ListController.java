@@ -65,8 +65,11 @@ public class ListController {
            stage.setScene(new Scene(editRoot));
            stage.setTitle("Editar Cadastro");
            stage.initModality(Modality.WINDOW_MODAL);
-           stage.show();
-       }catch (IOException e){
+           stage.showAndWait();
+
+           listaTab.getItems().clear();
+           listaTab.setItems(alunoService.listaAlunos());
+       }catch (IOException|SQLException e){
            e.printStackTrace();
        }
 

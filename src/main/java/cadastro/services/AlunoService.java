@@ -31,6 +31,7 @@ public class AlunoService {
 
             statement.executeUpdate();
             alunos.add(aluno);
+            database.shutdown();
             return true;
         }catch (SQLException sqlException){
             return false;
@@ -63,9 +64,38 @@ public class AlunoService {
             }
 
             database.shutdown();
-
             return alunos;
         }
     }
+    public boolean editarCadastro(String nome, Aluno aluno) throws SQLException {
+        database = new Database();
+
+        try(PreparedStatement statement = database.connection.prepareStatement("UPDATE alunos set data_nascimento = ?,sexo = ?, responsavel = ? where nome = ?")){
+            statement.setDate(1, Date.valueOf(aluno.getLocalDate()));
+            statement.setString(2, aluno.getSexo());
+            statement.setString(3, aluno.getResponsavel());
+            statement.setString(4, nome);
+
+            statement.executeUpdate();
+            return true;
+
+        } catch(SQLException sqlException) {
+            return false;
+        }
+    }
+    public boolean removerAluno(String nome) throws SQLException{
+        database = new Database();
+
+        try(PreparedStatement statement = database.connection.prepareStatement("DELETE FROM alunos where nome = ?")) {
+            statement.setString(1, nome);
+            statement.executeUpdate();
+            database.shutdown();
+
+            return true;
+        }catch (SQLException sqlException){
+            return false;
+        }
+    }
+
 
 }

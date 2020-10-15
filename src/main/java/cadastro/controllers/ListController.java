@@ -51,7 +51,7 @@ public class ListController {
     public void onSelectRow(Aluno aluno){
        try{
            FXMLLoader loader = new FXMLLoader();
-           loader.setLocation(getClass().getResource("/cadastro/views/editar_cadastro.fxml"));
+           loader.setLocation(getClass().getResource("/views/editar_cadastro.fxml"));
            loader.load();
 
            EditController editController = loader.getController();

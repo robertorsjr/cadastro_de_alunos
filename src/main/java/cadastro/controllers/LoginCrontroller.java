@@ -11,38 +11,36 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 
-public class LoginCrontroller{
+
+public class LoginCrontroller {
+
     @FXML
     private AnchorPane loginTab;
     @FXML
     private TextField tfUsuario;
     @FXML
     private PasswordField pwSenha;
-    @FXML
-    private ImageView loginView;
 
 
     Sistema sistema = Sistema.getInstance();
     ObservableList<Usuario> usuarios;
 
-
-    public void primeiroUsuario(TextField tfUsuario, PasswordField pwSenha){
-        Usuario usuario = new Usuario();
-        usuario.setUsuario(tfUsuario.getText ());
-        usuario.setSenha(pwSenha.getText ());
-        usuarios.addAll(usuario);
-    }
     @FXML
     public void initialize(){
+
         tfUsuario.setText("Admin");
         pwSenha.setText("admin");
     }
+
+    public void onClickCadastrar(){
+        // chamar tela de cadastro.
+    }
+
     public void onClickEntrar(){
         tfUsuario.getText ();
         pwSenha.getText ();
@@ -70,7 +68,7 @@ public class LoginCrontroller{
     }
     public void trocarTela(){
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("/cadastro/views/tab.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/views/tab.fxml"));
             Stage tabDeCadastro = new Stage ();
             tabDeCadastro.initStyle(StageStyle.UNDECORATED);
             tabDeCadastro.setScene(new Scene (root, 600, 400));
@@ -97,6 +95,5 @@ public class LoginCrontroller{
             alert.setContentText("Login ERRADO");
             alert.showAndWait();
         }
-
     }
 }

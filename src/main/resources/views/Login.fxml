@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
@@ -29,18 +28,12 @@
       <TextField fx:id="tfUsuario" layoutX="332.0" layoutY="60.0" />
       <Button fx:id="btnEntrar" layoutX="233.0" layoutY="164.0" mnemonicParsing="false" onAction="#onClickEntrar" prefHeight="44.0" prefWidth="270.0" text="Entrar" />
       <Button fx:id="btnSair" layoutX="233.0" layoutY="272.0" mnemonicParsing="false" onAction="#onClickSair" prefHeight="44.0" prefWidth="270.0" text="Sair" />
-      <Button layoutX="233.0" layoutY="219.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="270.0" text="Cadastrar" />
+      <Button fx:id="btnCadastrar" layoutX="233.0" layoutY="219.0" mnemonicParsing="false" onAction="#onClickCadastrar" prefHeight="44.0" prefWidth="270.0" text="Cadastrar" />
       <Label layoutX="266.0" layoutY="14.0" text="Cadastro de Alunos">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Label accessibleRole="IMAGE_VIEW" alignment="CENTER" layoutX="14.0" layoutY="19.0" prefHeight="321.0" prefWidth="214.0" text="IMAGEM" wrapText="true">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="6.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
    </children>
    <effect>
       <DropShadow blurType="GAUSSIAN">

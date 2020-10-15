@@ -15,8 +15,8 @@ public class TabController {
 
     @FXML
     public void initialize() throws Exception{
-        listarTab.setContent(FXMLLoader.load(getClass().getResource("/cadastro/views/lista_Aluno.fxml")));
-        cadastrarTab.setContent(FXMLLoader.load(getClass().getResource("/cadastro/views/cadastro_Aluno.fxml")));
-        buscarTab.setContent(FXMLLoader.load(getClass().getResource("/cadastro/views/buscar_Aluno.fxml")));
+        listarTab.setContent(FXMLLoader.load(getClass().getResource("/views/lista_Aluno.fxml")));
+        cadastrarTab.setContent(FXMLLoader.load(getClass().getResource("/views/cadastro_Aluno.fxml")));
+        buscarTab.setContent(FXMLLoader.load(getClass().getResource("/views/buscar_Aluno.fxml")));
     }
 }

@@ -1,7 +1,7 @@
 package cadastro.controllers;
 
-import cadastro.models.Sistema;
 import cadastro.models.Usuario;
+import cadastro.services.AlunoService;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +27,7 @@ public class LoginCrontroller {
     private PasswordField pwSenha;
 
 
-    Sistema sistema = Sistema.getInstance();
+    AlunoService alunoService = AlunoService.getInstance();
     ObservableList<Usuario> usuarios;
 
     @FXML

@@ -2,7 +2,6 @@ package cadastro.controllers;
 
 import cadastro.models.Aluno;
 import cadastro.models.Sexo;
-import cadastro.models.Sistema;
 import cadastro.services.AlunoService;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

@@ -2,11 +2,13 @@ package cadastro.controllers;
 
 import cadastro.models.Aluno;
 import cadastro.models.Sexo;
-import cadastro.models.Sistema;
+import cadastro.services.AlunoService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -23,8 +25,8 @@ public class AddController {
     private Label lbResponsavel;
 
 
-    ObservableList choiceBox = FXCollections.observableArrayList();
-    Sistema sistema = Sistema.getInstance();
+        ObservableList choiceBox = FXCollections.observableArrayList();
+        AlunoService alunoService = AlunoService.getInstance();
 
     public void initialize(){
         choiceBox();
@@ -46,7 +48,7 @@ public class AddController {
     public void onClickExit(){
         System.exit(0);
     }
-    public void onClick() {
+    public void onClick() throws SQLException {
         Alert alert;
         Aluno aluno = new Aluno();
 
@@ -62,7 +64,7 @@ public class AddController {
 
         if(validacaoDeCampos()){
             cleanTextFilds();
-            sistema.cadastrarAlunos(aluno);
+            alunoService.cadastrarAlunos(aluno);
 
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Operação");

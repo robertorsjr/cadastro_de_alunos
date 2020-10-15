@@ -5,9 +5,7 @@ import cadastro.models.Sexo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class AlunoService {
     private static AlunoService instence;
@@ -22,6 +20,21 @@ public class AlunoService {
             instence = new AlunoService();
         }
         return instence;
+    }
+    public boolean cadastrarAlunos(Aluno aluno) throws SQLException {
+        database = new Database();
+        try (PreparedStatement statement = database.connection.prepareStatement("INSERT INTO alunos (nome,sexo,data_nascimento,responsavel) Values(?,?,?,?)")){
+            statement.setString(1, aluno.getNome());
+            statement.setString(2, aluno.getSexo());
+            statement.setDate(3, Date.valueOf(aluno.getLocalDate()));
+            statement.setString(4, aluno.getResponsavel());
+
+            statement.executeUpdate();
+            alunos.add(aluno);
+            return true;
+        }catch (SQLException sqlException){
+            return false;
+        }
     }
     public ObservableList<Aluno> listaAlunos() throws SQLException {
         database = new Database();
@@ -54,4 +67,5 @@ public class AlunoService {
             return alunos;
         }
     }
+
 }

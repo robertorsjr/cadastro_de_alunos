@@ -33,10 +33,6 @@ public class Aluno {
         return this.sexo;
     }
 
-    public void sqlSexo(String sexo){
-        getSexo();
-    }
-
     public String getSexo() {
         if(sexo == null){
             return "";

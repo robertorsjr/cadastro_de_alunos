@@ -3,6 +3,7 @@ package cadastro.controllers;
 import cadastro.models.Aluno;
 import cadastro.models.Sexo;
 import cadastro.models.Sistema;
+import cadastro.services.AlunoService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class ListController {
 
@@ -29,16 +31,17 @@ public class ListController {
     @FXML
     private TableColumn<Aluno, String> tcResponsavel;
 
-    Sistema sistema = Sistema.getInstance();
+    private final AlunoService alunoService = AlunoService.getInstance();
 
-    public void initialize() {
+    public void initialize() throws SQLException {
+        alunoService.listaAlunos();
         tcNome.setCellValueFactory(new PropertyValueFactory<Aluno, String>("Nome"));
         tcSexo.setCellValueFactory(new PropertyValueFactory<Aluno, Sexo>("sexo"));
         tcData.setCellValueFactory(new PropertyValueFactory<Aluno, String>("dataDeNasc"));
         tcResponsavel.setCellValueFactory(new PropertyValueFactory<Aluno, String>("responsavel"));
 
         listaTab.setPlaceholder(new Label("Nenhum Cadastro"));
-        listaTab.setItems(sistema.alunos);
+        listaTab.setItems(alunoService.alunos);
 
         listaTab.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) ->
                 onSelectRow(observableValue.getValue())

@@ -33,6 +33,10 @@ public class Aluno {
         return this.sexo;
     }
 
+    public void sqlSexo(String sexo){
+        getSexo();
+    }
+
     public String getSexo() {
         if(sexo == null){
             return "";
@@ -43,7 +47,6 @@ public class Aluno {
     public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
-
     public String getResponsavel() {
         return responsavel;
     }

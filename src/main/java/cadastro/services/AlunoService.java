@@ -96,6 +96,38 @@ public class AlunoService {
             return false;
         }
     }
+    public ObservableList<Aluno> procurarAlunos(String nome)throws SQLException{
+        database = new Database();
 
+        try (
+            Statement statement = database.connection.createStatement();
+            ResultSet rs = statement.executeQuery("select * from alunos where nome like '%"+nome+"%'");
+        ){
+            ObservableList<Aluno> alunosFiltrados = FXCollections.observableArrayList();
 
+            while (rs.next()){
+                Aluno aluno = new Aluno();
+                aluno.setNome(rs.getString("nome"));
+
+                char sexo = rs.getString("sexo").charAt(0);
+
+                if (sexo == 'F' || sexo == 'f') {
+                    aluno.setSexo(Sexo.FEMININO);
+                } else if (sexo == 'M' || sexo == 'm') {
+                    aluno.setSexo(Sexo.MASCULINO);
+                } else {
+                    aluno.setSexo(Sexo.OUTRO);
+                }
+
+                aluno.setDataDeNasc(rs.getDate("data_nascimento").toLocalDate());
+                aluno.setResponsavel(rs.getString("responsavel"));
+
+                alunosFiltrados.add(aluno);
+            }
+
+            return alunosFiltrados;
+        }catch (SQLException sqlException){
+            return null;
+        }
+    }
 }

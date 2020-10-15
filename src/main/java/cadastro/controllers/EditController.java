@@ -83,9 +83,6 @@ public class EditController {
     }
     @FXML
     public void onClickRemove() {
-        Stage stage = (Stage) btnRemover.getScene ().getWindow ();
-        stage.close ();
-
         Alert alert = new Alert (
                 Alert.AlertType.CONFIRMATION,
                 "Deseja remover esse aluno?",
